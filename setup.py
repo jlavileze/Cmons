@@ -1,5 +1,4 @@
-from distutils.core import setup
-from disutils.extension import Extension
+from distutils.core import setup, Extension
 from Cython.Build import cythonize
 
 try:
@@ -14,19 +13,19 @@ ext_modules = []
 
 if use_cython:
     ext_modules += [
-        Extension("Cmons.NumberTheory", ["cython/NumberTheory.pyx"])
+        Extension("Cmons.NumberTheory", ["Cmons/NumberTheory.pyx"])
     ]
     cmdclass.update({'build_ext':build_ext})
 else:
     ext_modules += [
         Extension("Cmons.NumberTheory", ["cython/NumberTheory"])
-
+    ]
 
 setup(name='Cmons',
       version='0.1.0',
       url='https://github.com/jlavileze/Cmons',
       author='Jose Avilez',
-      packages='Cmons',
+      packages=['Cmons'],
       cmdclass=cmdclass,
       ext_modules=ext_modules,
       classifiers=[

@@ -1,4 +1,6 @@
 from libc.math cimport sqrt, floor, log
+from cpython cimport array
+import array
 import numpy as np
 
 def sieve_of_eratosthenes(int upper_limit):
@@ -183,7 +185,7 @@ def logarithmic_integral(int b, int n):
 
 def totient_sieve(int n):
     cdef:
-        array.array a = array.array('i', np.zeros(n+1, dtype = np.int8))
+        cdef array.array a = array.array('i', np.zeros(n+1, dtype = np.int8))
         int[:] phi = a
         int i, p, j
     for i in range(1,n+1):
